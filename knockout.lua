@@ -69,24 +69,24 @@ Citizen.CreateThread(function()
 				    StopAnimTask(PlayerPedId(), "mp_suicide", "pill", 1.0)
 				end)
 			    elseif Config.core == 'esx' then
-								    ESX.Progressbar("test", 25000,{
-									FreezePlayer = false, 
-									animation ={
-									    type = "anim",
-									    dict = "mp_suicide", 
-									    lib ="pill" 
-									}, 
-									onFinish = function()
-									--Code here
-								    end})
+				    ESX.Progressbar("test", 25000,{
+					FreezePlayer = false, 
+					animation ={
+					    type = "anim",
+					    dict = "mp_suicide", 
+					    lib ="pill" 
+					}, 
+					onFinish = function()
+					--Code here
+				    end})
 			    else
-								
-        			print("You need to configure your own progressbar")
-				exports['progressBars']:startUI(Config.progressbarDurantion, "You are knocked out")
+        			--print("You need to configure your own progressbar")
+				--exports['progressBars']:startUI(Config.progressbarDurantion, "You are knocked out")
+				lib.progressBar({label = 'Sinut saatiin tajuttomaksi', duration = Config.progressbarDurantion, anim = { dict = 'mp_suicide', clip = 'pill', flag = 49}}) 
 			    end
 			    knockedOut = true
 			    -- Health after knockout preferably dont make it more than 150 (50 %) because people will abuse with it {No need to go to hospital or so}
-			    SetEntityHealth(Ped, 100)
+			    SetEntityHealth(Ped, 125)
                     end	
                 end
             end
